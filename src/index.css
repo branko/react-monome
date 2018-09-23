@@ -8,18 +8,20 @@ body {
 
 .monome {
   display: block;
-  width: 400px;
-  height: 410px;
+  width: 335px;
+  height: 355px;
   margin: 0 auto;
   background: #555;
 }
 
 .tile {
+  font-size: 0px;
+  box-sizing: content-box;
   background: #ddd;
   display: inline-block;
-  width: 80px;
-  height: 80px;
-  margin: 10px;
+  width: 30px;
+  height: 30px;
+  margin: 10px 5px 0 5px;
 }
 
 .enabled {

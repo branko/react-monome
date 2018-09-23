@@ -4,22 +4,22 @@ import './App.css';
 import Monome from './Monome'
 
 class App extends Component {
+  ROWS = 8
+  COLS = 8
+
   constructor(props) {
     super(props);
 
+    let tileStates = [];
+
+    while (tileStates.length < this.ROWS * this.COLS) tileStates.push(false);
+
     this.state = {
-      tileStates: [
-        false, false, false, false,
-        false, false, false, false,
-        false, false, false, false,
-        false, false, false, false
-      ],
+      tileStates,
       current: 0,
       audioCtx: new AudioContext(),
     }
   }
-
-
 
   createOscillator = (freq) => {
     let oscillator = this.state.audioCtx.createOscillator();
@@ -45,15 +45,15 @@ class App extends Component {
     let interval = setInterval(() => {
       gainNode.gain.value -= 0.05;
       if (gainNode.gain.value <= 0) clearInterval(interval)
-    }, 50)
+    }, 100)
   }
 
   componentDidMount() {
     let gainNodes = [];
-    let notes = [783.99, 659.25, 523.25, 440];
+    let notes = [783.99, 659.25, 523.25, 440, 349.23, 293.66, 246.94, 196.00];
 
-    for (let i = 0; i < 16; i++) {
-      let noteId = Math.floor(i / 4);
+    for (let i = 0; i < this.ROWS * this.COLS; i++) {
+      let noteId = Math.floor(i / this.COLS);
       console.log(notes[noteId])
       gainNodes.push(this.createOscillator(notes[noteId]));
     }
@@ -61,7 +61,7 @@ class App extends Component {
     this.setState({ gainNodes })
 
     setInterval(() => {
-      this.setState(prevState => ({ current: (prevState.current + 1) % 4 }))
+      this.setState(prevState => ({ current: (prevState.current + 1) % this.COLS }))
     }, 500)
   }
 
