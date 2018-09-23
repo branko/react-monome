@@ -9,8 +9,18 @@ class MonomeTile extends Component {
 
   render() {
     let classes = ['tile'];
-    if (this.props.enabled) classes.push('enabled');
-    if (this.props.active) classes.push('active');
+
+    if (this.props.enabled) {
+      classes.push('enabled')
+    }
+
+    if (this.props.active) {
+      classes.push('active');
+    }
+
+    if (this.props.active && this.props.enabled) {
+      this.props.playNote(this.props.tileId);
+    }
 
     return (
       <div
