@@ -8,7 +8,7 @@ class Monome extends Component {
       return (
         <MonomeTile
           playNote={this.props.playNote}
-          active={ i % 8 === this.props.current }
+          active={ i % 8 === this.props.currentRow }
           key={i}
           tileId={i}
           enabled={t}
