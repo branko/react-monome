@@ -7,20 +7,17 @@ class MonomeTile extends Component {
     this.props.toggleTile(id)
   }
 
-  render() {
-    let classes = ['tile'];
-
-    if (this.props.enabled) {
-      classes.push('enabled')
-    }
-
-    if (this.props.active) {
-      classes.push('active');
-    }
-
+  componentDidUpdate() {
     if (this.props.active && this.props.enabled) {
       this.props.playNote(this.props.tileId);
     }
+  }
+
+  render() {
+    let classes = ['tile'];
+
+    if (this.props.enabled) classes.push('enabled');
+    if (this.props.active) classes.push('active');
 
     return (
       <div
