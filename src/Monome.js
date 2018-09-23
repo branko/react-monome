@@ -7,6 +7,7 @@ class Monome extends Component {
     const tiles = this.props.tiles.map((t, i) => {
       return (
         <MonomeTile
+          playNote={this.props.playNote}
           active={ i % 4 === this.props.current }
           key={i}
           tileId={i}
