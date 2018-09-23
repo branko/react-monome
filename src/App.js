@@ -22,7 +22,7 @@ class App extends Component {
       audioCtx: new AudioContext(),
       maxVolume: 1,
       decayFactor: 0.9,
-      tempo: 120,
+      tempo: 80,
     }
   }
 
@@ -119,10 +119,10 @@ class App extends Component {
     })
   }
 
-  bpmToMilliseconds = (bpm) => {
+  bpmToMillisecondsPerNote = (bpm) => {
     const MS_IN_MINUTE = 1000 * 60;
 
-    return MS_IN_MINUTE / bpm;
+    return MS_IN_MINUTE / (bpm * 4);
   }
 
   startInterval = (bpm) => {
@@ -137,7 +137,7 @@ class App extends Component {
           scheduleTempoChange: false
         }),
           () => {
-            const newBPM = this.bpmToMilliseconds(this.state.tempo)
+            const newBPM = this.bpmToMillisecondsPerNote(this.state.tempo)
             this.startInterval(newBPM)
           }
         )
@@ -155,7 +155,7 @@ class App extends Component {
   componentDidMount() {
     this.generateNotes()
 
-    this.startInterval(this.bpmToMilliseconds(this.state.tempo));
+    this.startInterval(this.bpmToMillisecondsPerNote(this.state.tempo));
   }
 
   toggleTile = (i) => {
@@ -207,8 +207,8 @@ class App extends Component {
               value={this.state.tempo}
               onChange={this.handleTempoChange}
               onChangeEnd={this.handleTempoChangeEnd}
-              max={300}
-              min={60}
+              max={150}
+              min={50}
               step={1}
               width={100}
               height={100}
