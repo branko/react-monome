@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio context test</title>
+</head>
+<body>
+  <input id="start" type="submit" name="start">
+  <script>
+    let interval;
+    
+    document.querySelector('#start').addEventListener('click', e => {
+      gainNode.gain.value = 1;
+      clearInterval(interval)
+      interval = setInterval(() => {
+        gainNode.gain.value -= 0.05;
+        if (gainNode.gain.value <= 0) clearInterval(interval)
+      }, 50)
+    })
+
+    const audioCtx = new AudioContext();
+
+    let oscillator = audioCtx.createOscillator();
+    let gainNode = audioCtx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination)
+    gainNode.gain.value = 0
+
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 440; // value in hertz
+    oscillator.start();
+
+    let oscillator2 = audioCtx.createOscillator();
+
+    oscillator2.connect(gainNode);
+
+    oscillator2.type = 'sine';
+    oscillator2.frequency.value = 880; // value in hertz
+    oscillator2.start();
+  </script>
+</body>
+</html>
