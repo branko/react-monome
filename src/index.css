@@ -8,10 +8,11 @@ body {
 
 .monome {
   display: block;
-  width: 335px;
-  height: 355px;
+  width: 360px;
+  height: 395px;
   margin: 0 auto;
   background: #555;
+  padding: 0 5px;
 }
 
 .tile {
@@ -19,9 +20,9 @@ body {
   box-sizing: content-box;
   background: #ddd;
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin: 10px 5px 0 5px;
+  width: 10%;
+  height: 10%;
+  margin: 1.75% 1.25% 0 1.25%;
 }
 
 .enabled {
@@ -34,4 +35,18 @@ body {
 
 .active.enabled {
   background: #c5c;
+}
+
+input[type="button"] {
+  border: none;
+  background: #abf;
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+input[type="button"]:hover {
+  background: #7ad;
 }
