@@ -79,3 +79,7 @@ input[type="button"]:hover {
 .knob h3 {
   margin-bottom: 10px;
 }
+.no-support {
+  color: #fefefe;
+  padding: 0 20px;
+}
