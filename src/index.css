@@ -82,4 +82,5 @@ input[type="button"]:hover {
 .no-support {
   color: #fefefe;
   padding: 0 20px;
+  text-align: center;
 }
