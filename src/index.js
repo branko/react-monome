@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <div>
-    {typeof AudioContext !== 'function' ?
+    {typeof AudioContext === 'function' ?
       <App /> :
         <p class="no-support">
           Your browser does not support the WebAudio API
