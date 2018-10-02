@@ -4,5 +4,12 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<div>{typeof AudioContext === 'function' ? <App /> : <p class="no-support">Your browser does not support the AudioContext API</p>}</div>, document.getElementById('root'));
+ReactDOM.render(
+  <div>
+    {typeof AudioContext !== 'function' ?
+      <App /> :
+        <p class="no-support">
+          Your browser does not support the WebAudio API
+        </p>}
+  </div>, document.getElementById('root'));
 registerServiceWorker();
